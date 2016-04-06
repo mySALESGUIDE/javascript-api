@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mySALESGUIDE Javascript API example</title>
+    <script src="API.js"></script>
+  </head>
+  <body>
+    <h1>JS API example usage</h1>
+    
+    <pre id="contactInformation">
+
+    </pre>
+
+    <button onClick="loadContact();">Load contact</button>
+
+    <script>
+      function contactSelected(contact) {
+        document.getElementById('contactInformation').innerHTML = JSON.stringify(contact);
+      }
+
+      function loadContact() {
+        mySALESGUIDE.showContactPicker( 'contactSelected' );
+      }
+    </script>
+
+  </body>
+</html>
