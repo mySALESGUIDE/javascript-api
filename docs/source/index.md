@@ -5,7 +5,7 @@ language_tabs:
   - javascript
 
 toc_footers:
-  - <a href='#'>Download latest JS API release</a>
+  - <a href='https://github.com/mySALESGUIDE/javascript-api/releases'>Download latest JS API release</a>
 
 
 search: true
