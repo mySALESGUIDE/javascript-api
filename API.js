@@ -7,7 +7,7 @@
  * To enable AGNITIO compatibility include the salesmaster_agnitio.js file inside your agnitio presentation
  *
  * @class mySALESGUIDE
- * @version 1.0.0
+ * @version 1.1.0
  */
 (function () {
     "use strict";
@@ -135,6 +135,15 @@
         iFrame.parentNode.removeChild(iFrame);
         iFrame = null;
     }
+
+    /**
+     * This method checks if the javascript API is loaded within a valid app context.
+     *
+     * @return {Boolean}
+     */
+    mySALESGUIDE.isAvailable = function () {
+        return (navigator.userAgent.match(/mySALESGUIDE_App/g) !== null);
+    };
 
     /**
      * This method opens a specific file in the native viewer

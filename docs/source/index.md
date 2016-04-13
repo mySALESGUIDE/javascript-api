@@ -15,6 +15,16 @@ search: true
 
 The mySALESGUIDE Javascript API is accessible through a global variable (on the `window` object) called `mySALESGUIDE`.
 
+# Determine if the API is available
+
+```javascript
+if (mySALESGUIDE.isAvailable()) {
+    alert("I'm inside the app.");
+}
+```
+
+This method checks if the javascript API is available and loaded in an app context.
+
 # Working with app content
 
 ## Open a specific file
