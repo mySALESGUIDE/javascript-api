@@ -289,13 +289,14 @@
      * @param {String} fileExtension The file extension to use
      * @param {String} callback The name of the callback function after the file was saved
      * @param {Boolean|undefined} openFile Should the downloaded file be opened after successful transfer (default: true)
+     * @param {Boolean} editPDF Should the file be editable after it is downloaded from the device?  (default: false)
      * @param {String} errorCallback The name of the callback function when an error occurs
      *
      * Example usage:
      *
      *        mySALESGUIDE.saveContactFile( pdfData, 1, 'Bedarfsanalyse Auswertung', 'pdf', 'saved');
      */
-    mySALESGUIDE.saveContactFile = function (fileURL, contactID, filename, fileExtension, callback, openFile, errorCallback) {
+    mySALESGUIDE.saveContactFile = function (fileURL, contactID, filename, fileExtension, callback, openFile, editPDF, errorCallback) {
         if (openFile === undefined) {
             openFile = true;
         }
@@ -307,6 +308,7 @@
             'fileExtension': fileExtension,
             'callback': callback,
             'openFile': openFile,
+            'editPDF': editPDF,
             'errorCallback': errorCallback
         }));
     };
