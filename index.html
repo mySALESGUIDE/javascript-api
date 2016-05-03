@@ -1,0 +1,242 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>mySALESGUIDE Javascript API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script src="js/lib/energize.js"></script>
+<script src="js/lib/imagesloaded.min.js"></script>
+<script src="js/lib/jquery_ui.js"></script>
+<script src="js/lib/jquery.highlight.js"></script>
+<script src="js/lib/jquery.tocify.js"></script>
+<script src="js/lib/lunr.js"></script>
+    <script src="js/script.js"></script>
+
+    
+      <script>
+        $(function() {
+            setupLanguages(["javascript"]);
+        });
+      </script>
+    
+  </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png">
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png">
+      
+        <div class="lang-selector">
+          
+              <a href="#" data-language-name="javascript">javascript</a>
+          
+        </div>
+      
+      
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      
+      <div id="toc">
+      </div>
+      
+        <ul class="toc-footer">
+          
+              <li><a href="https://github.com/mySALESGUIDE/javascript-api/releases">Download latest JS API release</a></li>
+          
+        </ul>
+      
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The mySALESGUIDE Javascript API is accessible through a global variable (on the <code>window</code> object) called <code>mySALESGUIDE</code>.</p>
+<h1 id="Determine-if-the-API-is-available"><a href="#Determine-if-the-API-is-available" class="headerlink" title="Determine if the API is available"></a>Determine if the API is available</h1><pre><code class="highlight javascript"><span class="line"><span class="keyword">if</span> (mySALESGUIDE.isAvailable()) &#123;</span><br><span class="line">    alert(<span class="string">"I'm inside the app."</span>);</span><br><span class="line">&#125;</span><br></code></pre>
+<p>This method checks if the javascript API is available and loaded in an app context.</p>
+<h1 id="Working-with-app-content"><a href="#Working-with-app-content" class="headerlink" title="Working with app content"></a>Working with app content</h1><h2 id="Open-a-specific-file"><a href="#Open-a-specific-file" class="headerlink" title="Open a specific file"></a>Open a specific file</h2><pre><code class="highlight javascript"><span class="line"><span class="comment">/* To open a file with the ID 1000 */</span></span><br><span class="line"></span><br><span class="line">mySALESGUIDE.openFile(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* To open a file with the filename 'dummy.txt' */</span></span><br><span class="line"></span><br><span class="line">mySALESGUIDE.openFile(<span class="string">'dummy.txt'</span>);</span><br></code></pre>
+<p>This method opens a specific file in the native file viewer.<br>If the file type is not supported, an error message will be shown to the app user.</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yes</strong></td>
+<td>Number or String</td>
+<td>The file identifier. This can either be a file ID or an explicit file name.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Open-a-presentation-content"><a href="#Open-a-presentation-content" class="headerlink" title="Open a presentation / content"></a>Open a presentation / content</h2><pre><code class="highlight javascript"><span class="line"><span class="comment">/* To open a presentation with the content id 1000 using it's name as the window title */</span></span><br><span class="line"></span><br><span class="line">mySALESGUIDE.openContent(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"> * To open a content with the filename 'Calculator.zip'</span><br><span class="line"> * using 'The calculator' as the window title</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line">mySALESGUIDE.openContent(<span class="string">'Calculator.zip'</span>, <span class="string">'The calculator'</span>);</span><br></code></pre>
+<p>This method opens a specific presentation in the app.</p>
+<h3 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h3><table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yes</strong></td>
+<td>Number or String</td>
+<td>The content identifier. This can either be a content ID or an explicit file name.</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>String</td>
+<td>The title to use when opening the content. If no title is specified, the content name will be used.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Compose-an-email"><a href="#Compose-an-email" class="headerlink" title="Compose an email"></a>Compose an email</h2><pre><code class="highlight javascript"><span class="line">mySALESGUIDE.sendMail(</span><br><span class="line">  <span class="string">'mail@example.com'</span> ,</span><br><span class="line">  <span class="string">'cc@example.com'</span>,</span><br><span class="line">  <span class="string">'Welcome to mySALESGUIDE'</span>,</span><br><span class="line">  <span class="string">'This is the email body'</span>,</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">);</span><br></code></pre>
+<p>This method opens the compose email view and pre-fills the given values.</p>
+<h3 id="Parameters-2"><a href="#Parameters-2" class="headerlink" title="Parameters"></a>Parameters</h3><table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The receivers email address</td>
+</tr>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The email address to use as a carbon copy (CC)</td>
+</tr>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The subject of the email</td>
+</tr>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The body of the email</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Array</td>
+<td>An array containing file IDs to use as email attachments</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Working-with-contacts"><a href="#Working-with-contacts" class="headerlink" title="Working with contacts"></a>Working with contacts</h1><h2 id="Open-a-contact-picker"><a href="#Open-a-contact-picker" class="headerlink" title="Open a contact picker"></a>Open a contact picker</h2><pre><code class="highlight javascript"><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">contactSelected</span>(<span class="params">contact</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"You selected "</span> + contact.first_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mySALESGUIDE.showContactPicker( <span class="string">'contactSelected'</span> );</span><br></code></pre>
+<blockquote>
+<p>When a user selects a contact, the following javascript object will be passed to the callback function:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="line">&#123;</span><br><span class="line">  <span class="attr">"contact_id"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"status_id"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"user_id"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"contact_source_id"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"industry_id"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"customer_group_id"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"salutation"</span>: <span class="string">"Frau"</span>,</span><br><span class="line">  <span class="attr">"title"</span>: <span class="string">"Professor"</span>,</span><br><span class="line">  <span class="attr">"first_name"</span>: <span class="string">"Laszlo"</span>,</span><br><span class="line">  <span class="attr">"last_name"</span>: <span class="string">"Ditschlerin"</span>,</span><br><span class="line">  <span class="attr">"position"</span>: <span class="string">"Abteilungsleitung"</span>,</span><br><span class="line">  <span class="attr">"section"</span>: <span class="string">"ORT interactive"</span>,</span><br><span class="line">  <span class="attr">"birthdate"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"additional_information"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"phone_work"</span>: <span class="string">"02151376314"</span>,</span><br><span class="line">  <span class="attr">"phone_fax"</span>: <span class="string">"02151376314"</span>,</span><br><span class="line">  <span class="attr">"phone_mobile"</span>: <span class="string">"02151376314"</span>,</span><br><span class="line">  <span class="attr">"phone_other"</span>: <span class="string">"02151376314"</span>,</span><br><span class="line">  <span class="attr">"phone_home"</span>: <span class="string">"02151376314"</span>,</span><br><span class="line">  <span class="attr">"email"</span>: <span class="string">"aputz@ullrich.net"</span>,</span><br><span class="line">  <span class="attr">"company"</span>: <span class="string">"ORT Interactive GmbH"</span>,</span><br><span class="line">  <span class="attr">"street"</span>: <span class="string">"Bachstr."</span>,</span><br><span class="line">  <span class="attr">"zip"</span>: <span class="string">"41352"</span>,</span><br><span class="line">  <span class="attr">"city"</span>: <span class="string">"Korschenbroich"</span>,</span><br><span class="line">  <span class="attr">"state"</span>: <span class="string">"Baden-Württemberg"</span>,</span><br><span class="line">  <span class="attr">"country"</span>: <span class="string">"Germany"</span>,</span><br><span class="line">  <span class="attr">"website"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"customer_number"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"facebook"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"twitter"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"google_plus"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"xing"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"linked_in"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"custom_field_1"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_2"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_3"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_4"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_5"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_6"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_7"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_8"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_9"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_10"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_11"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_12"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_13"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_14"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"custom_field_15"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"datetime_created"</span>: <span class="string">"2015-12-02T12:59:42+0100"</span>,</span><br><span class="line">  <span class="attr">"datetime_modified"</span>: <span class="string">"2015-12-07T09:58:08+0100"</span></span><br><span class="line">&#125;</span><br></code></pre>
+<p>This method presents a modal contact picker. When the user selects a contact from the list, the given callback method will be called.</p>
+<aside class="notice">Because of technical restrictions it is <strong>not</strong> possible to pass in an anonymous callback function. Use a function name, accessible on the global scope, instead.</aside>
+
+<h3 id="Parameters-3"><a href="#Parameters-3" class="headerlink" title="Parameters"></a>Parameters</h3><table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>Name of the callback function.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Save-a-file-to-a-contact"><a href="#Save-a-file-to-a-contact" class="headerlink" title="Save a file to a contact"></a>Save a file to a contact</h2><pre><code class="highlight javascript"><span class="line">mySALESGUIDE.saveContactFile(</span><br><span class="line">  <span class="string">'http://www.foo.bar/file.baz'</span>,</span><br><span class="line">  <span class="number">1</span>,</span><br><span class="line">  <span class="string">'My Filename'</span>,</span><br><span class="line">  <span class="string">'pdf'</span>,</span><br><span class="line">  <span class="string">'fileSaved'</span></span><br><span class="line">);</span><br></code></pre>
+<p>This method downloads a file and saves it to a given contact.</p>
+<aside class="notice">Because of technical restrictions it is <strong>not</strong> possible to pass in an anonymous callback function. Use a function name, accessible on the global scope, instead.</aside>
+
+<h3 id="Parameters-4"><a href="#Parameters-4" class="headerlink" title="Parameters"></a>Parameters</h3><table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The file URL to access the file and download it</td>
+</tr>
+<tr>
+<td><strong>Yes</strong></td>
+<td>Number</td>
+<td>The contact ID to save the file to</td>
+</tr>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The filename for the new file</td>
+</tr>
+<tr>
+<td><strong>Yes</strong></td>
+<td>String</td>
+<td>The file extension to use</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>String</td>
+<td>The name of the callback function after the file was saved</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Boolean</td>
+<td>Should the downloaded file be opened after successfully attaching it to the contact (default: true)</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Boolean</td>
+<td>Should the downloaded file be editable (default: false)</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>String</td>
+<td>The name of the callback function to execute in case of an error</td>
+</tr>
+</tbody>
+</table>
+
+        
+      </div>
+      <div class="dark-box">
+        
+          <div class="lang-selector">
+            
+                <a href="#" data-language-name="javascript">javascript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
