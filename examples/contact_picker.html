@@ -22,7 +22,11 @@
       }
 
       function loadContact() {
-        mySALESGUIDE.showContactPicker( 'contactSelected' );
+        if(mySALESGUIDE.isAvailable()) {
+          mySALESGUIDE.showContactPicker( 'contactSelected' ); 
+        } else {
+          alert(' Sorry - no mySALESGUIDE environment detected');
+        }
       }
     </script>
 
