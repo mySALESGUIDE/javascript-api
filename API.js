@@ -7,7 +7,7 @@
  * To enable AGNITIO compatibility include the salesmaster_agnitio.js file inside your agnitio presentation
  *
  * @class mySALESGUIDE
- * @version 1.1.0
+ * @version 1.1.1
  */
 (function () {
     "use strict";
@@ -289,12 +289,13 @@
      * @param {String} fileExtension The file extension to use
      * @param {String} callback The name of the callback function after the file was saved
      * @param {Boolean|undefined} openFile Should the downloaded file be opened after successful transfer (default: true)
+     * @param {String} errorCallback The name of the callback function when an error occurs
      *
      * Example usage:
      *
      *        mySALESGUIDE.saveContactFile( pdfData, 1, 'Bedarfsanalyse Auswertung', 'pdf', 'saved');
      */
-    mySALESGUIDE.saveContactFile = function (fileURL, contactID, filename, fileExtension, callback, openFile) {
+    mySALESGUIDE.saveContactFile = function (fileURL, contactID, filename, fileExtension, callback, openFile, errorCallback) {
         if (openFile === undefined) {
             openFile = true;
         }
@@ -305,7 +306,8 @@
             'filename': filename,
             'fileExtension': fileExtension,
             'callback': callback,
-            'openFile': openFile
+            'openFile': openFile,
+            'errorCallback': errorCallback
         }));
     };
 

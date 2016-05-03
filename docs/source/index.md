@@ -201,3 +201,4 @@ Required | Type | Description
 **Yes** | String | The file extension to use
 **No** | String | The name of the callback function after the file was saved
 **No** | Boolean | Should the downloaded file be opened after successfully attaching it to the contact (default: true)
+**No** | String | The name of the callback function to execute in case of an error
