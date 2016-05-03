@@ -7,7 +7,7 @@
  * To enable AGNITIO compatibility include the salesmaster_agnitio.js file inside your agnitio presentation
  *
  * @class mySALESGUIDE
- * @version 1.1.1
+ * @version 1.1.2
  */
 (function () {
     "use strict";
