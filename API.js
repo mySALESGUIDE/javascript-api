@@ -132,7 +132,9 @@
         iFrame = document.createElement("IFRAME");
         iFrame.setAttribute("src", invokestring);
         document.body.appendChild(iFrame);
-        iFrame.parentNode.removeChild(iFrame);
+        setTimeout(function(){
+            iFrame.parentNode.removeChild(iFrame);
+        },100);
         iFrame = null;
     }
 
