@@ -42,6 +42,15 @@
     var OPEN_CONTENTMANAGER_API = "openContentManager";
 
     /**
+     * Open File via URL API Name
+     * @property OPEN_FILEURL_API
+     * @type string
+     * @private
+     * @readonly
+     */
+    var OPEN_FILEURL_API = "openFileURL";
+
+    /**
      * Open Filemanager API Name
      * @property OPEN_FILEMANAGER_API
      * @type string
@@ -211,6 +220,25 @@
             'files': _files
         };
         _invoke(SEND_MAIL_API, JSON.stringify(params));
+    };
+
+
+    /**
+     * This method downloads and opens the given file URL.
+     *
+     * @method openFileURL
+     * @param {String} file_url The file URL to download and open
+     * @param {String} title The file title
+     *
+     * Example usage
+     *
+     *      mySALESGUIDE.openFileURL('http://www.my-salesguide.com/foo.pdf', 'Dummy PDF file');
+     */
+    mySALESGUIDE.openFileURL = function (file_url, title) {
+        _invoke(OPEN_FILEURL_API, JSON.stringify({
+            file_url: file_url,
+            title: title
+        }));
     };
 
 
