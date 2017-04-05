@@ -127,6 +127,16 @@
     var SAVE_CONTACT_FILE_API = "saveContactFile";
 
     /**
+     * Save a note and associate it with a Contact
+     *
+     * @property SAVE_CONTACT_NOTE_API
+     * @type string
+     * @private
+     * @readonly
+     */
+    var SAVE_CONTACT_NOTE_API = "saveContactNote";
+
+    /**
      * This is a private method which invokes the native API call
      *
      * @method _invoke
@@ -339,6 +349,34 @@
             'callback': callback,
             'openFile': openFile,
             'editPDF': editPDF,
+            'errorCallback': errorCallback
+        }));
+    };
+
+    /**
+     * This method saves a note and attaches it to a contact.
+     *
+     * @method saveContactNote
+     * @param {String} note The note to save
+     * @param {Number} contactID The contact to save the file to
+     * @param {Boolean} visible Should the contact note be visible in the app and backend?
+     * @param {String} callback The name of the callback function after the file was saved
+     * @param {String} errorCallback The name of the callback function when an error occurs
+     *
+     * Example usage:
+     *
+     *        mySALESGUIDE.saveContactNote( 'Hello', 1, true, 'saved', 'error');
+     */
+    mySALESGUIDE.saveContactNote = function (note, contactID, visible, callback, errorCallback) {
+        if (visible === undefined) {
+            visible = true;
+        }
+
+        _invoke(SAVE_CONTACT_NOTE_API, JSON.stringify({
+            'note': note,
+            'contactID': contactID,
+            'visible': visible,
+            'callback': callback,
             'errorCallback': errorCallback
         }));
     };
