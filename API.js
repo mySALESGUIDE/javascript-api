@@ -153,8 +153,8 @@
         document.body.appendChild(iFrame);
         setTimeout(function(){
             iFrame.parentNode.removeChild(iFrame);
+            iFrame = null;
         },100);
-        iFrame = null;
     }
 
     /**
