@@ -1,0 +1,26 @@
+{
+  "name": "mysalesguide-api",
+  "version": "1.0.0",
+  "description": "mySALESGUIDE Javascript API",
+  "main": "API.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mySALESGUIDE/javascript-api.git"
+  },
+  "keywords": [
+    "mysalesguide"
+  ],
+  "author": "mySALESGUIDE GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mySALESGUIDE/javascript-api/issues"
+  },
+  "homepage": "https://github.com/mySALESGUIDE/javascript-api#readme"
+}
