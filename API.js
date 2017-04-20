@@ -23,6 +23,15 @@
     var OPEN_FILE_API = "openFile";
 
     /**
+     * Get User API Name
+     * @property GET_USER_API
+     * @type string
+     * @private
+     * @readonly
+     */
+    var GET_USER_API = "getUser";
+
+    /**
      * Open Content API Name
      * @property OPEN_CONTENT_API
      * @type string
@@ -180,6 +189,23 @@
             file: file
         };
         _invoke(OPEN_FILE_API, JSON.stringify(params));
+    };
+
+    /**
+     * This method retrieves the currently logged in user
+     *
+     * @method getUser
+     * @param {string} callback
+     *
+     * Example usage:
+     *
+     *        mySALESGUIDE.getUser( "receivedUser" );
+     */
+    mySALESGUIDE.getUser = function (callback) {
+        var params = {
+            callback: callback
+        };
+        _invoke(GET_USER_API, JSON.stringify(params));
     };
 
     /**
